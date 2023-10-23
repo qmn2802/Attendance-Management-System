@@ -4,7 +4,6 @@
  */
 package entity;
 
-import entity.BaseEntity;
 import java.util.ArrayList;
 
 /**
