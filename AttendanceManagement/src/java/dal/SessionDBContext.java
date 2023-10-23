@@ -4,13 +4,12 @@
  */
 package dal;
 
-import dal.DBContext;
-import entity.assignment.Attendance;
-import entity.assignment.Group;
-import entity.assignment.Room;
-import entity.assignment.Session;
-import entity.assignment.Subject;
-import entity.assignment.TimeSlot;
+import entity.Attendance;
+import entity.Group;
+import entity.Room;
+import entity.Session;
+import entity.Subject;
+import entity.TimeSlot;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
