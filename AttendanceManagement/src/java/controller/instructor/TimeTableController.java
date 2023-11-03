@@ -4,10 +4,10 @@
  */
 package controller.instructor;
 
-import dal.assignment.SessionDBContext;
-import dal.assignment.TimeSlotDBContext;
-import entity.assignment.Session;
-import entity.assignment.TimeSlot;
+import dal.SessionDBContext;
+import dal.TimeSlotDBContext;
+import entity.Session;
+import entity.TimeSlot;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -22,7 +22,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import util.DateTimeHelper;
+import utils.DateTimeHelper;
 
 /**
  *
@@ -102,7 +102,7 @@ public class TimeTableController extends HttpServlet {
         request.setAttribute("sessions", sessions);
         request.setAttribute("weeks", weeksOfYear);
         request.setAttribute("currentWeek", dates.get(0).toString() + " to " + dates.get(dates.size() - 1));
-        request.getRequestDispatcher("../view/instructor/timetable.jsp").forward(request, response);
+        request.getRequestDispatcher("../jsp/instructor/timetable.jsp").forward(request, response);
 
     }
 
