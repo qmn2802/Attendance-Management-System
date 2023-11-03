@@ -6,8 +6,16 @@ package utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjusters;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -106,5 +114,24 @@ public class DateTimeHelper {
 
         return dates;
     }
+    
+    public static List<String> getWeeksOfYear(int year){
+        List<String> weeksOfYear = new ArrayList<>();
+        LocalDate startDate = LocalDate.of(year, 1, 1);
+        LocalDate endDate = LocalDate.of(year, 12, 31);
+        
+        TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+        LocalDate current = startDate;
+        while (current.isBefore(endDate) || current.isEqual(endDate)) {
+            LocalDate weekStart = current.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+            LocalDate weekEnd = weekStart.plusDays(6);
+            
+            String weekString = weekStart.format(dateFormatter) + " to " + weekEnd.format(dateFormatter);
+            weeksOfYear.add(weekString);
+            current = weekStart.plusWeeks(1);
+        }
+        return weeksOfYear;
+    }
 }
