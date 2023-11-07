@@ -44,20 +44,29 @@ public class SessionDBContext extends DBContext<Session> {
                 session.setId(rs.getInt("sesid"));
                 session.setDate(rs.getDate("date"));
                 session.setIsAtt(rs.getBoolean("isAtt"));
+                
                 Room room = new Room();
                 room.setRid(rs.getString("roomid"));
+                
                 session.setRoom(room);
+                
                 TimeSlot t = new TimeSlot();
                 t.setId(rs.getInt("tid"));
+                
                 session.setTime(t);
+                
                 Group g = new Group();
                 g.setId(rs.getInt("gid"));
                 g.setName(rs.getString("gname"));
+                
                 session.setGroup(g);
+                
                 Subject subject = new Subject();
                 subject.setId(rs.getInt("subid"));
                 subject.setName(rs.getString("subname"));
+                
                 session.setSubject(subject);
+                
                 sessions.add(session);
             }
         } catch (SQLException ex) {
@@ -155,21 +164,30 @@ public class SessionDBContext extends DBContext<Session> {
                 session.setId(rs.getInt("sesid"));
                 session.setDate(rs.getDate("date"));
                 session.setIsAtt(rs.getBoolean("isAtt"));
+                
                 Room room = new Room();
                 room.setRid(rs.getString("roomid"));
+                
                 session.setRoom(room);
+                
                 TimeSlot t = new TimeSlot();
                 t.setId(rs.getInt("tid"));
                 t.setDescription(rs.getString("description"));
+                
                 session.setTime(t);
+                
                 Group g = new Group();
                 g.setId(rs.getInt("gid"));
                 g.setName(rs.getString("gname"));
+                
                 session.setGroup(g);
+                
                 Subject subject = new Subject();
                 subject.setId(rs.getInt("subid"));
                 subject.setName(rs.getString("subname"));
+                
                 session.setSubject(subject);
+                
                 return session;
             }
         } catch (SQLException ex) {
