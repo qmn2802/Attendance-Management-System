@@ -55,7 +55,7 @@
         <nav class="navbar navbar-expand-lg" style="background-color: white">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="img/Logo-Dai-hoc-FPT (1).webp" alt="" style="width: 120px;">
+                    <img src="img/logoFPT.webp" alt="" style="width: 120px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
