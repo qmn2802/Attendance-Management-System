@@ -4,8 +4,10 @@
  */
 package controller.instructor;
 
+import controller.authentication.BasedRequiredAuthenticationController;
 import dal.SessionDBContext;
 import dal.TimeSlotDBContext;
+import entity.Account;
 import entity.Session;
 import entity.TimeSlot;
 import java.io.IOException;
@@ -24,22 +26,28 @@ import utils.DateTimeHelper;
 
 /**
  *
- * @author sonnt
+ * @author minhq
  */
-public class TimeTableController extends HttpServlet {
+public class TimeTableController extends BasedRequiredAuthenticationController {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.text.ParseException
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ParseException {
+    public static int getIndex(List<String> myList, String element) {
+        int index = -1;
+        for (int i = 0; i < myList.size(); i++) {
+            if (element.equals(myList.get(i))) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account LoggedUser) throws ServletException, IOException {
         LocalDate currentDate = LocalDate.now();
         int index;
         int instructorid = Integer.parseInt(request.getParameter("id"));
@@ -79,7 +87,7 @@ public class TimeTableController extends HttpServlet {
                 }
                 dateParts = weekString.split(" to ");
                 dates = DateTimeHelper.getSqlDatesInRange(dateParts[0], dateParts[1]);
-            } catch (ParseException ex ) {
+            } catch (ParseException ex) {
                 Logger.getLogger(TimeTableController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -96,65 +104,11 @@ public class TimeTableController extends HttpServlet {
         request.setAttribute("weeks", weeksOfYear);
         request.setAttribute("currentWeek", dates.get(0).toString() + " to " + dates.get(dates.size() - 1));
         request.getRequestDispatcher("../jsp/instructor/timetable.jsp").forward(request, response);
-
     }
 
-    public static int getIndex(List<String> myList, String element) {
-        int index = -1;
-        for (int i = 0; i < myList.size(); i++) {
-            if (element.equals(myList.get(i))) {
-                index = i;
-                break;
-            }
-        }
-        return index;
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(TimeTableController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account LoggedUser) throws ServletException, IOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(TimeTableController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

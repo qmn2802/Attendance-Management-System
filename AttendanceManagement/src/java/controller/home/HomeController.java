@@ -25,6 +25,7 @@ public class HomeController extends BasedRequiredAuthenticationController {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, Account LoggedUser) throws ServletException, IOException {
         request.setAttribute("iname", LoggedUser.getInstructor().getName());
+        request.setAttribute("iid", LoggedUser.getInstructor().getId());
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

@@ -20,92 +20,13 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         <<link rel="stylesheet" href="../css/timetableStyle.css"/>
-<!--        <style>
-            .sidebar a {
-                text-decoration: none;
-                color: white;
+        <script>
+
+            function autoSubmit() {
+                document.getElementById("yearForm").submit();
             }
 
-            .sidebar svg {
-                fill: white;
-            }
-
-            .body {
-                background-color: #efefef;
-            }
-            /*            .logo {
-                            background-image: url(C:\Users\minhq\OneDrive\Documents\GitHub\PRJ301-Assignment\AttendanceManagement\web\img\logoFPT.webp);
-                        }*/
-            /* ------------------- timetable ------------------- */
-            .custom-table {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                margin-top: 10px;
-            }
-            .custom-body {
-                position: absolute;
-                top: 60px; /* Điều chỉnh vị trí của thẻ con bằng các thuộc tính top, left, right, bottom */
-                left: 0;
-                width: 100%;
-                height: 100%;
-            }
-            .session {
-                padding: 10px;
-            }
-            .session-detail {
-                background-color: #d1ffe6;
-                border-radius: 5px;
-            }
-            .session-detail p {
-                display: block;
-                margin: 0px;
-            }
-            .slots {
-
-            }
-            .slots, .session-detail {
-                height: 120px;
-            }
-
-            /* -------  date ----------- */
-            .session, .dates, .date-day {
-                width: 160px;
-            }
-
-            .dates-background {
-                border-radius: 5px;
-                height: 800px;
-                background-color: #fff1f8;
-            }
-            .dates, .date-day {
-                text-align: center;
-                padding: 5px;
-            }
-            .date-day p{
-                font-size: 25px;
-                margin-bottom: 0px;
-            }
-            .input-date {
-                display: flex;
-                justify-content: center;
-                padding: 20px;
-                /*                width: 1000px;*/
-            }
-            .input-date button {
-                margin: 0 20px 0 20px;
-            }
-            .slot-name {
-                margin-bottom: 0;
-                font-size: 25px;
-            }
-            .slot-description {
-                font-size: 12px;
-            }
-            .mess {
-                color: red;
-            }
-        </style>-->
+        </script>
     </head>
 
     <body class="body">
@@ -147,9 +68,9 @@
                 </div>
             </nav>
         </header>
-<!--end header-->
+        <!--end header-->
         <main>
-            <div class="row" style="height: 84px; width: 100%;"></div>
+            <div class="row" style="height: 60px; width: 100%; margin: 0;"></div>
             <div class="row" style="width: 100%;">
 
                 <div class="col-1 bg-dark sidebar d-flex flex-column" style="height: 100vh; width: 120px !important; position: fixed; ">
@@ -226,26 +147,29 @@
                         </div>
                     </div>
                 </div>
-<!-- end sidebar -->
+                <!-- end sidebar -->
                 <div class="col-1"></div>
                 <div class="col-11">
-                    <form id="yearForm" action="timetable" method="GET" class="input-date">
+                    <form id="yearForm" action="timetable" method="GET" class="input-date mx-auto mt-3" 
+                          style=" background-color: #fff1f8;
+                                    height: 80px;
+                                    width: 600px;
+                                    border-radius: 50px;                            
+                                    ">
                         <input type="hidden" value="${param.id}" name="id"/>
 
-                        <button name="btnWeek" type="submit" value="previous" >
+                        <button class="btn btn-secondary" name="btnWeek" type="submit" value="previous" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                             </svg>
                         </button>
-                        <label for="year">Year:</label>
-                        <select name="year" id="year" onchange="autoSubmit()">
+                        <select class="form-select w-25 text-center" name="year" id="year" onchange="autoSubmit()">
                             <option value="2023" <c:if test="${param.year == '2023'}">selected="selected"</c:if>>2023</option>
                             <option value="2022" <c:if test="${param.year == '2022'}">selected="selected"</c:if>>2022</option>
                             <option value="2021" <c:if test="${param.year == '2021'}">selected="selected"</c:if>>2021</option>
                             </select>
 
-                            <label for="selectedWeek">Week</label> 
-                            <select name="selectedWeek" id="selectedWeek" onchange="autoSubmit()">
+                            <select class="form-select w-25 text-center" name="selectedWeek" id="selectedWeek" onchange="autoSubmit()">
                                 <option value="${requestScope.currentWeek}" >${requestScope.currentWeek}</option>
                             <c:forEach items="${requestScope.weeks}" var="week">
 
@@ -253,7 +177,7 @@
                             </c:forEach>
                         </select>
 
-                        <button name="btnWeek" type="submit" value="next">
+                        <button class="btn btn-secondary" name="btnWeek" type="submit" value="next">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
                                  class="bi bi-chevron-right" viewBox="0 0 16 16" name="nextWeek" >
                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -308,7 +232,7 @@
                                             </c:forEach>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="custom-body">
                                         <c:forEach items="${requestScope.slots}" var="s">
                                             <div class="row custom-row " style="margin-top: 50px;">
@@ -328,7 +252,7 @@
                                                                 <c:forEach items="${requestScope.sessions}" var="ses">
                                                                     <c:if test="${ses.time.id eq s.id and ses.date eq d}">
                                                                         <div class="session-detail" >
-                                                                            <a href="att?id=${ses.id}" style="text-decoration: none">
+                                                                            <a href="takeAtt?id=${ses.id}" style="text-decoration: none">
                                                                                 <p class="group">${ses.group.name}</p> 
                                                                                 <p class="subject-name">- ${ses.subject.name}</p>
                                                                                 <p class="room">at ${ses.room.rid}</p>
@@ -368,4 +292,3 @@
 
 </html>
 
-</html>

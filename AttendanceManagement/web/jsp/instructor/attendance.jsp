@@ -1,62 +1,39 @@
 <%-- 
-    Document   : welcome
-    Created on : Nov 8, 2023, 4:28:32 AM
-    Author     : minhq
+    Document   : timetable
+    Created on : Oct 18, 2023, 11:50:42 AM
+    Author     : sonnt
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 
     <head>
-        <title>Welcome</title>
+        <title>Time Table</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <script src="https://kit.fontawesome.com/3423e56988.js" crossorigin="anonymous"></script>
+
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/timetableStyle.css"/>
         <style>
-            .body {
-                height: 80vh;
-                background-color: #efefef;
-            }
-
-            .col-4 {
-                background-color: white;
-            }
-
-            .menu .row {
-                margin: 10px;
-            }
-
-            .menu .col-4 {
-                margin: 10px;
-                height: 100px;
-                width: 300px;
-                border-radius: 20px;
-            }
-
-            .col-4 svg {
-                fill: rgb(255, 149, 0);
-                margin-top: 15px;
-            }
-
-            a {
-                text-decoration: none;
-                color: #000;
+            .col.pt-2 p {
+                margin: 0;
+                padding: 0;
             }
         </style>
     </head>
 
     <body class="body">
         <header>
-            <nav class="navbar navbar-expand-lg" style="background-color: white">
+            <nav class="navbar navbar-expand-lg fixed-top" style="background-color: white; ">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
-                        <img src="img/logoFPT.webp" alt="" style="width: 120px;">
+                        <img src="../img/logoFPT.webp" style="width: 120px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -90,31 +67,31 @@
                 </div>
             </nav>
         </header>
-        <div class="content"> 
-            <main class="main mt-5">
-                <div class="row container m-auto ">
-                    <div class="welcome " style="width: 1300px;
-                         height: 300px;
-                         background-color: aqua;
-                         background-image: url(img/1300x300FPTWibu.jpg);
-                         background-size: cover;
-                         border-radius: 20px;
-                         align-items: center;
-                         display: flex;
-                         justify-content: start;">
-                        <div class="welcome-content" style="color: rgb(0, 0, 0);
-                             -webkit-text-stroke: 1px rgba(255, 255, 255, 0.473);">
-                            <h1><b>Hello ${requestScope.iname},</b></h1>
-                            <h4><b>Welcome to FPT University Academic Portal!</b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu text-center mt-5 container ">
-                    <div class="row justify-content-center">
-                        <div class="col-4">
+        <!--end header-->
+        <main>
+            <div class="row" style="height: 60px; width: 100%; margin: 0;"></div>
+            <div class="row" style="width: 100%;">
+
+                <div class="col-1 bg-dark sidebar d-flex flex-column" style="height: 100vh; width: 120px !important; position: fixed; ">
+
+                    <div class="sidebar-detail justify-content-center text-center mt-3">
+
+                        <div id="" class="row">
                             <a href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="3em" fill="currentColor" class="bi bi-newspaper"
-                                     viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="3em" fill="currentColor"
+                                     class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd"
+                                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+                                <p>Profile</p>
+                            </a>
+                        </div>
+
+                        <div class="row">
+                            <a href="">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="3em" fill="currentColor"
+                                     class="bi bi-newspaper" viewBox="0 0 16 16">
                                 <path
                                     d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
                                 <path
@@ -124,10 +101,9 @@
                             </a>
                         </div>
 
-                        <div class="col-4">
-                            <a href="/fapfpt/instructor/timetable?id=${requestScope.iid}">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="3em"
-                                     viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <div id="timetable" class="row">
+                            <a href="">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
 
                                 <path
                                     d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z" />
@@ -136,7 +112,7 @@
                             </a>
                         </div>
 
-                        <div class="col-4">
+                        <div class="row">
                             <a href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="3em" fill="currentColor" class="bi bi-table"
                                      viewBox="0 0 16 16">
@@ -147,10 +123,7 @@
                             </a>
                         </div>
 
-                    </div>
-
-                    <div class="row justify-content-center">
-                        <div class="col-4">
+                        <div class="row">
                             <a href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="3em"
                                      viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -160,18 +133,9 @@
                                 <p>Report</p>
                             </a>
                         </div>
-                        <div class="col-4">
+
+                        <div class="row logout ">
                             <a href="">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="3em"
-                                     viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                <path
-                                    d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                                </svg>
-                                <p>Profile</p>
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="login.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="3em"
                                      viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path
@@ -182,12 +146,78 @@
                         </div>
                     </div>
                 </div>
+                <!-- end sidebar -->
+                <div class="col-1"></div>
+                <div class="col-11">
+                    <div class="slot-info text-center">
+                        <div class="row ">
+                            <div class="col-6 ">
+                                <p>Group: ${requestScope.ses.group.name}</p>
+                            </div>
+                            <div class="col-6 ">
+                                <p>Subject: ${requestScope.ses.subject.name}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Room: ${requestScope.ses.room.rid}</p> 
+                            </div>
+                            <div class="col-6">
+                                <p>Time Slot: ${requestScope.ses.time.description}</p>
+                            </div>
+                        </div>
+                    </div>
 
-            </main>
-        </div>
+                    <form action="att" method="POST">
+                        <div class="table container text-center">
+                            <!-- Header Row -->
+                            <div class="row row-header d-flex align-items-center" style=" background-color: #ccc; height: 30px; border-bottom: 1px solid #ccc;">
+                                <div class="col font-weight-bold">Student</div>
+                                <div class="col font-weight-bold">Status</div>
+                                <div class="col font-weight-bold">Description</div>
+                                <div class="col font-weight-bold">Time</div>
+                            </div>
+                            <!-- Data Rows -->
+                            <c:forEach items="${requestScope.atts}" var="a">
+                                <div class="row d-flex align-items-center" style=" background-color: #ffffff; border-bottom: 1px solid #ccc; height: 60px;">
+                                    <div class="col pt-2">
+                                        <div>
+                                            <p>${a.student.name} </p> 
+                                            <p>${a.student.id}</p> 
+                                        </div>
+                                        <input type="hidden" name="stuid" value="${a.student.id}"/>
+                                    </div>
+                                    <div class="col">
+                                        <input type="radio"
+                                               <c:if test="${!a.status}">checked="checked"</c:if>
+                                               name="status${a.student.id}" value="absent"> Absent
+                                        <input type="radio"
+                                               <c:if test="${a.status}">checked="checked"</c:if>
+                                               name="status${a.student.id}" value="present"> Present
+                                    </div>
+                                    <div class="col ">
+                                        <input type="text" class="form-control" value="${a.description}"
+                                               name="description${a.student.id}" 
+                                               style=" border: none; outline: none;">
+                                    </div>
+                                    <div class="col">
+                                        ${a.datetime}
+                                    </div>
+                                </div>
+                            </c:forEach>
+                            <div class="row d-flex justify-content-end mt-3" > 
+                                <input type="hidden" value="${requestScope.ses.id}" name="sesid"/>
+                                <input type="submit" class="btn btn-primary" value="Save"/>
+                            </div>
+                        </div>
 
+                    </form>
+                </div>
+            </div>
+        </main>
         <footer>
             <!-- place footer here -->
+
         </footer>
         <!-- Bootstrap JavaScript Libraries -->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

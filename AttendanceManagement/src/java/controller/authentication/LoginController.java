@@ -99,19 +99,9 @@ public class LoginController extends HttpServlet {
                 c_pass.setMaxAge(60*10);
                 response.addCookie(c_user);
                 response.addCookie(c_pass);
-                
             }
-           response.sendRedirect("/fapfpt/home");
+           response.sendRedirect("home");
         }
-//        if(username.equals("qmn") && password.equals("123")) {
-//            Cookie cookie = new Cookie("iname", "Quan");
-//            cookie.setMaxAge(30);
-//            response.addCookie(cookie);
-//            response.sendRedirect("/fapfpt/home");
-//        } else {
-//            request.setAttribute("mess", "incorrect pass or username");
-//            request.getRequestDispatcher("login.jsp").forward(request, response);
-//        }
     }
 
     /**
