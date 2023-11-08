@@ -4,10 +4,10 @@
  */
 package controller.instructor;
 
-import dal.assignment.SessionDBContext;
-import dal.assignment.TimeSlotDBContext;
-import entity.assignment.Session;
-import entity.assignment.TimeSlot;
+import dal.SessionDBContext;
+import dal.TimeSlotDBContext;
+import entity.Session;
+import entity.TimeSlot;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import util.DateTimeHelper;
+import utils.DateTimeHelper;
 
 /**
  *
