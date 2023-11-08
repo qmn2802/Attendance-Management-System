@@ -4,16 +4,15 @@
  */
 package controller.instructor;
 
-import dal.SessionDBContext;
-import dal.TimeSlotDBContext;
-import entity.Session;
-import entity.TimeSlot;
+import dal.assignment.SessionDBContext;
+import dal.assignment.TimeSlotDBContext;
+import entity.assignment.Session;
+import entity.assignment.TimeSlot;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.text.ParseException;
@@ -22,7 +21,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.DateTimeHelper;
+import util.DateTimeHelper;
 
 /**
  *
@@ -43,12 +42,11 @@ public class TimeTableController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         LocalDate currentDate = LocalDate.now();
-        PrintWriter out = response.getWriter();
         int index;
         int instructorid = Integer.parseInt(request.getParameter("id"));
 
         String selectedYear = request.getParameter("year");
-        boolean btnWeek = Boolean.valueOf(request.getParameter("btnWeek"));
+        String btnWeek = request.getParameter("btnWeek");
         String weekString = request.getParameter("selectedWeek");
 
         String[] dateParts;
@@ -56,7 +54,6 @@ public class TimeTableController extends HttpServlet {
         List<String> weeksOfYear = new ArrayList<>();
 
         if (selectedYear == null) {
-
             weeksOfYear = DateTimeHelper.getWeeksOfYear(currentDate.getYear());
         } else {
             int year = Integer.parseInt(selectedYear);
@@ -66,27 +63,24 @@ public class TimeTableController extends HttpServlet {
         if (weekString == null) {
             dates = DateTimeHelper.getCurrentWeekDates();
         } else {
-
             try {
                 index = getIndex(weeksOfYear, weekString);
-                if (index != -1) {
-                    if (btnWeek) {
-                        if (index < weeksOfYear.size() - 1) {
-                            weekString = weeksOfYear.get(index + 1);
-                        } else {
-                            printToasts(out);
-                        }
-                    } else {
-                        if (index > 0) {
-                            weekString = weeksOfYear.get(index - 1);
-                        } else {
-                            printToasts(out);
+                if (btnWeek != null) {
+                    if (index != -1) {
+                        try {
+                            if ("next".equals(btnWeek)) {
+                                weekString = weeksOfYear.get(index + 1);
+                            } else {
+                                weekString = weeksOfYear.get(index - 1);
+                            }
+                        } catch (IndexOutOfBoundsException e) {
+                            request.setAttribute("mess", "Please select another year to see the next week!");
                         }
                     }
                 }
                 dateParts = weekString.split(" to ");
                 dates = DateTimeHelper.getSqlDatesInRange(dateParts[0], dateParts[1]);
-            } catch (ParseException ex) {
+            } catch (ParseException ex ) {
                 Logger.getLogger(TimeTableController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -102,7 +96,7 @@ public class TimeTableController extends HttpServlet {
         request.setAttribute("sessions", sessions);
         request.setAttribute("weeks", weeksOfYear);
         request.setAttribute("currentWeek", dates.get(0).toString() + " to " + dates.get(dates.size() - 1));
-        request.getRequestDispatcher("../jsp/instructor/timetable.jsp").forward(request, response);
+        request.getRequestDispatcher("../view/instructor/timetable.jsp").forward(request, response);
 
     }
 
@@ -111,15 +105,10 @@ public class TimeTableController extends HttpServlet {
         for (int i = 0; i < myList.size(); i++) {
             if (element.equals(myList.get(i))) {
                 index = i;
-                break;  // Khi tìm thấy, thoát khỏi vòng lặp.
+                break;
             }
         }
         return index;
-    }
-
-    public static void printToasts(PrintWriter out) {
-        out.println("");
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
