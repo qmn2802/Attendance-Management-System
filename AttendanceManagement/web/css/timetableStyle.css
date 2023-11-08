@@ -1,0 +1,94 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Nov 8, 2023, 6:17:30 PM
+    Author     : minhq
+*/
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar svg {
+    fill: white;
+}
+
+.body {
+    background-color: #efefef;
+}
+/*            .logo {
+                background-image: url(C:\Users\minhq\OneDrive\Documents\GitHub\PRJ301-Assignment\AttendanceManagement\web\img\logoFPT.webp);
+            }*/
+/* ------------------- timetable ------------------- */
+.custom-table {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+}
+.custom-body {
+    position: absolute;
+    top: 60px; /* Điều chỉnh vị trí của thẻ con bằng các thuộc tính top, left, right, bottom */
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.session {
+    padding: 10px;
+}
+.session-detail {
+    background-color: #d1ffe6;
+    border-radius: 5px;
+}
+.session-detail p {
+    display: block;
+    margin: 0px;
+}
+.slots {
+
+}
+.slots, .session-detail {
+    height: 120px;
+}
+
+/* -------  date ----------- */
+.session, .dates, .date-day {
+    width: 160px;
+}
+
+.dates-background {
+    border-radius: 5px;
+    height: 800px;
+    background-color: #fff1f8;
+}
+.dates, .date-day {
+    text-align: center;
+    padding: 5px;
+}
+.date-day p{
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+.input-date {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    /*                width: 1000px;*/
+}
+.input-date button {
+    margin: 0 20px 0 20px;
+}
+.slot-name {
+    margin-bottom: 0;
+    font-size: 25px;
+}
+.slot-description {
+    font-size: 12px;
+}
+.mess {
+    color: red;
+}
+
