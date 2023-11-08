@@ -19,9 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 .body {
     background-color: #efefef;
 }
-/*            .logo {
-                background-image: url(C:\Users\minhq\OneDrive\Documents\GitHub\PRJ301-Assignment\AttendanceManagement\web\img\logoFPT.webp);
-            }*/
+
 /* ------------------- timetable ------------------- */
 .custom-table {
     position: relative;

@@ -18,12 +18,12 @@ import java.util.logging.Logger;
  */
 public class TimeSlotDBContext extends DBContext<TimeSlot> {
 
-    @Override
+   @Override
     public ArrayList<TimeSlot> list() {
         ArrayList<TimeSlot> slots = new ArrayList<>();
         try {
             String sql = "SELECT [tid]\n"
-                    + "      ,[description]\n"
+                    + "      ,[description], [name]\n"
                     + "  FROM [TimeSlot]";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
@@ -32,6 +32,7 @@ public class TimeSlotDBContext extends DBContext<TimeSlot> {
                 TimeSlot t = new TimeSlot();
                 t.setId(rs.getInt("tid"));
                 t.setDescription(rs.getString("description"));
+                t.setName(rs.getString("name"));
                 slots.add(t);
             }
             
@@ -40,7 +41,7 @@ public class TimeSlotDBContext extends DBContext<TimeSlot> {
         }
         return slots;
     }
-
+    
     @Override
     public void insert(TimeSlot entity) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

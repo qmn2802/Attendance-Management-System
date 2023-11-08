@@ -13,8 +13,19 @@ import java.util.ArrayList;
 public class TimeSlot extends BaseEntity{
     private int id;
     private String description;
+    private String name;
+    
     private ArrayList<Session> sessions = new ArrayList<>();
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
     public int getId() {
         return id;
     }

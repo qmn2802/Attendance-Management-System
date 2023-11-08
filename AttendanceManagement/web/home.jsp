@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 
@@ -103,7 +104,7 @@
                          justify-content: start;">
                         <div class="welcome-content" style="color: rgb(0, 0, 0);
                              -webkit-text-stroke: 1px rgba(255, 255, 255, 0.473);">
-                            <h1><b>Hello Username,</b></h1>
+                            <h1><b>Hello ${requestScope.iname},</b></h1>
                             <h4><b>Welcome to FPT University Academic Portal!</b></h4>
                         </div>
                     </div>

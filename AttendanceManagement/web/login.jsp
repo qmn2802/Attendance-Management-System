@@ -1,3 +1,11 @@
+<%-- 
+    Document   : login
+    Created on : Nov 9, 2023, 12:01:02 AM
+    Author     : minhq
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,7 +22,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/styleLogin.css">
     </head>
 
     <body>
@@ -57,7 +65,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             <div class="background">
                 <img src="img/background.png" alt="">
             </div>
-
+<!-- login form -->
             <div class="login">
                 <form class="form login-form" action="login" method="post">
                     <div class="flex-column">
@@ -71,7 +79,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     </div>
 
                     <div class="flex-column">
-                        <label>Password </label>
+                        <label>Password</label>
                     </div>
                     <div class="inputForm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="-64 0 512 512" height="20">
@@ -102,9 +110,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <span class="span">Forgot password?</span>
                     </div>
                     <button type="submit" class="button-submit">Sign In</button>
+                    <p class="text-center" style="color: red;">${requestScope.mess}</p>
                 </form>
+                
             </div>
         </main>
+        
         <footer>
             <div class="container fixed-bottom" style="text-align: center">
                 <div id="ctl00_divSupport">

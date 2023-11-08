@@ -19,8 +19,8 @@
         <!-- Bootstrap CSS v5.2.1 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <!--        <link rel="stylesheet" href="../../css/timetableStyle.css"/>-->
-        <style>
+        <<link rel="stylesheet" href="../css/timetableStyle.css"/>
+<!--        <style>
             .sidebar a {
                 text-decoration: none;
                 color: white;
@@ -105,7 +105,7 @@
             .mess {
                 color: red;
             }
-        </style>
+        </style>-->
     </head>
 
     <body class="body">
@@ -113,8 +113,7 @@
             <nav class="navbar navbar-expand-lg fixed-top" style="background-color: white; ">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
-                        <div class="logo"></div>
-                        <img src="C:\Users\minhq\OneDrive\Documents\GitHub\PRJ301-Assignment\AttendanceManagement\web\img\logoFPT.webp">
+                        <img src="../img/logoFPT.webp" style="width: 120px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -148,6 +147,7 @@
                 </div>
             </nav>
         </header>
+<!--end header-->
         <main>
             <div class="row" style="height: 84px; width: 100%;"></div>
             <div class="row" style="width: 100%;">
@@ -226,6 +226,7 @@
                         </div>
                     </div>
                 </div>
+<!-- end sidebar -->
                 <div class="col-1"></div>
                 <div class="col-11">
                     <form id="yearForm" action="timetable" method="GET" class="input-date">
@@ -307,7 +308,7 @@
                                             </c:forEach>
                                         </div>
                                     </div>
-
+                                    
                                     <div class="custom-body">
                                         <c:forEach items="${requestScope.slots}" var="s">
                                             <div class="row custom-row " style="margin-top: 50px;">

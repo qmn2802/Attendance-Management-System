@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
