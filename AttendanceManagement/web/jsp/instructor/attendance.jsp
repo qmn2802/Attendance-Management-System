@@ -110,7 +110,7 @@
                         </div>
 
                         <div id="timetable" class="row">
-                            <a href="">
+                            <a href="/fapfpt/instructor/timetable?id=${requestScope.iid}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 448 512">
 
                                 <path
@@ -175,7 +175,7 @@
                             </div>
                         </div>
                     </div>
-
+                            <p class="text-center" style="color: red;">${param.mess}</p>
                     <form action="takeAtt" method="POST">
                         <div class="table container text-center">
                             <!-- Header Row -->
@@ -219,7 +219,7 @@
                             </div>
                         </div>
                     </form>
-                                <p class="text-center" style="color: red;">${param.mess}</p>
+                                
                 </div>
             </div>
         </main>

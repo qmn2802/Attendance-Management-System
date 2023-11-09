@@ -161,7 +161,7 @@
                     <form id="yearForm" action="timetable" method="GET" class="input-date mx-auto mt-3" 
                           style=" background-color: #fff1f8;
                           height: 80px;
-                          width: 600px;
+                          width: 1000px;
                           border-radius: 50px;
                           ">
                         <input type="hidden" value="${param.id}" name="id"/>

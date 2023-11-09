@@ -42,9 +42,8 @@ public class AttendanceController extends BasedRequiredAuthenticationController 
         AttendanceDBContext attDB = new AttendanceDBContext();
         ArrayList<Attendance> attendances = attDB.getAttendances(id);
         
-        
         request.setAttribute("atts", attendances);
-        
+        request.setAttribute("iid", LoggedUser.getInstructor().getId());
         request.getRequestDispatcher("../jsp/instructor/attendance.jsp").forward(request, response);
     }
 
@@ -69,8 +68,8 @@ public class AttendanceController extends BasedRequiredAuthenticationController 
         ses.setAtts(atts);
         SessionDBContext sesDB = new SessionDBContext();
         sesDB.addAttendances(ses);
-//        request.setAttribute("mess", "Updated!");
-        response.sendRedirect("takeAtt?id=" + sesId +"&mess=Updated!");
+        request.setAttribute("mess", "Updated!");
+        response.sendRedirect("takeAtt?id=" + sesId +"&mess= Updated!");
     }
 
 }
