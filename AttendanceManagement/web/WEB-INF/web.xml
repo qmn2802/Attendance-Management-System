@@ -8,10 +8,6 @@
         <servlet-class>controller.instructor.TimeTableController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AttendanceController</servlet-name>
-        <servlet-class>controller.instructor.AttendanceController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>controller.authentication.LoginController</servlet-class>
     </servlet>
@@ -23,13 +19,13 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.home.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AttendanceController</servlet-name>
+        <servlet-class>controller.instructor.AttendanceController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TimeTableController</servlet-name>
         <url-pattern>/instructor/timetable</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AttendanceController</servlet-name>
-        <url-pattern>/instructor/takeAtt</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
@@ -42,6 +38,10 @@
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AttendanceController</servlet-name>
+        <url-pattern>/instructor/takeAtt</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

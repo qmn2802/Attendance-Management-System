@@ -45,14 +45,15 @@ public class AttendanceController extends BasedRequiredAuthenticationController 
         
         request.setAttribute("atts", attendances);
         
-        request.getRequestDispatcher("../view/instructor/attendance.jsp").forward(request, response);
+        request.getRequestDispatcher("../jsp/instructor/attendance.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response, Account LoggedUser) throws ServletException, IOException {
        String[] stuids = request.getParameterValues("stuid");
+       int sesId = Integer.parseInt(request.getParameter("sesid"));
         Session ses = new Session();
-        ses.setId(Integer.parseInt(request.getParameter("sesid")));
+        ses.setId(sesId);
         ArrayList<Attendance> atts = new ArrayList<>();
         for (String stuid : stuids) {
             int id = Integer.parseInt(stuid);
@@ -68,7 +69,8 @@ public class AttendanceController extends BasedRequiredAuthenticationController 
         ses.setAtts(atts);
         SessionDBContext sesDB = new SessionDBContext();
         sesDB.addAttendances(ses);
-        response.getWriter().println("done");
+//        request.setAttribute("mess", "Updated!");
+        response.sendRedirect("takeAtt?id=" + sesId +"&mess=Updated!");
     }
 
 }

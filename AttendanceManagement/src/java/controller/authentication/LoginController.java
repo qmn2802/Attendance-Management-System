@@ -83,7 +83,7 @@ public class LoginController extends HttpServlet {
         Account loggedUser = db.get(param);
 
         if (loggedUser == null) {
-            request.setAttribute("mess", "incorrect pass or username");
+            request.setAttribute("mess", "Incorrect username or password!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             String remember = request.getParameter("remember");
@@ -95,8 +95,8 @@ public class LoginController extends HttpServlet {
             if (remember != null) {
                 Cookie c_user = new Cookie("user", username);
                 Cookie c_pass = new Cookie("pass", password);
-                c_user.setMaxAge(60*10);
-                c_pass.setMaxAge(60*10);
+                c_user.setMaxAge(3600);
+                c_pass.setMaxAge(3600);
                 response.addCookie(c_user);
                 response.addCookie(c_pass);
             }

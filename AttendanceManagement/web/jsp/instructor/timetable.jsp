@@ -33,7 +33,7 @@
         <header>
             <nav class="navbar navbar-expand-lg fixed-top" style="background-color: white; ">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/fapfpt/home">
                         <img src="../img/logoFPT.webp" style="width: 120px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -76,6 +76,14 @@
                 <div class="col-1 bg-dark sidebar d-flex flex-column" style="height: 100vh; width: 120px !important; position: fixed; ">
 
                     <div class="sidebar-detail justify-content-center text-center mt-3">
+                        <div id="" class="row">
+                            <a href="/fapfpt/home">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="3em" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                                </svg>
+                                <p>Home</p>
+                            </a>
+                        </div>
 
                         <div id="" class="row">
                             <a href="">
@@ -136,7 +144,7 @@
                         </div>
 
                         <div class="row logout ">
-                            <a href="">
+                            <a href="/fapfpt/logout">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="3em"
                                      viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path
@@ -152,10 +160,10 @@
                 <div class="col-11">
                     <form id="yearForm" action="timetable" method="GET" class="input-date mx-auto mt-3" 
                           style=" background-color: #fff1f8;
-                                    height: 80px;
-                                    width: 600px;
-                                    border-radius: 50px;                            
-                                    ">
+                          height: 80px;
+                          width: 600px;
+                          border-radius: 50px;
+                          ">
                         <input type="hidden" value="${param.id}" name="id"/>
 
                         <button class="btn btn-secondary" name="btnWeek" type="submit" value="previous" >
